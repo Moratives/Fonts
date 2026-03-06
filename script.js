@@ -39,7 +39,7 @@
     document.head.appendChild(fontLink);
     
     // Append after the main content section
-    var contentSection = document.querySelector('#js-content-section') || document.querySelector('.content_area');
+    var contentSection = document.querySelector('#js-header-section');
     if (contentSection) {
       contentSection.insertAdjacentElement('afterend', container);
     } else {
