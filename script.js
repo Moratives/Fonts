@@ -14,8 +14,8 @@
 
   // Wait for DOM to be ready
   function init() {
-    // Find the main content area - WebinarJam typically uses a main wrapper
-    var target = document.querySelector('.wj-content') || document.querySelector('#content') || document.querySelector('main') || document.body;
+    // Find the main content area - WebinarJam uses these selectors
+    var target = document.querySelector('#js-content-section') || document.querySelector('.content_area') || document.querySelector('.d-flex.flex-column') || document.body;
     
     // Create our injected sections container
     var container = document.createElement('div');
@@ -33,19 +33,24 @@
     fontLink.rel = 'stylesheet';
     document.head.appendChild(fontLink);
     
-    // Append after the form or at the end of the main content
-    var form = document.querySelector('form');
-    if (form && form.parentElement) {
-      form.parentElement.insertAdjacentElement('afterend', container);
+    // Append after the main content section
+    var contentSection = document.querySelector('#js-content-section') || document.querySelector('.content_area');
+    if (contentSection) {
+      contentSection.insertAdjacentElement('afterend', container);
     } else {
       target.appendChild(container);
     }
   }
 
   function scrollToForm() {
-    var form = document.querySelector('form') || document.querySelector('.wj-content');
-    if (form) {
-      form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    var overlay = document.querySelector('.wj_registration-overlay');
+    var contentSection = document.querySelector('#js-content-section');
+    var target = overlay || contentSection;
+    if (target) {
+      // For WebinarJam, trigger the registration overlay or scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Try to show registration overlay if it exists
+      if (overlay) { overlay.style.display = 'block'; }
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -53,6 +58,34 @@
 
   // Make scrollToForm available globally for onclick handlers
   window.cbScrollToForm = scrollToForm;
+
+  // Fix broken images - add error handling for geo-blocked CDN
+  function fixBrokenImages() {
+    var imgs = document.querySelectorAll('#cb-injected-sections img');
+    imgs.forEach(function(img) {
+      img.onerror = function() {
+        this.style.display = 'none'; // Hide broken images gracefully
+        // Add a placeholder text if it's a testimonial or important image
+        var placeholder = document.createElement('div');
+        placeholder.style.cssText = 'padding:20px;background:#f0f0f0;border-radius:8px;text-align:center;color:#999;font-style:italic;';
+        placeholder.textContent = 'Image unavailable in your region';
+        if (this.parentElement) { this.parentElement.insertBefore(placeholder, this); }
+      };
+      // Force reload with cache-busting for geo issues
+      if (img.src) {
+        var src = img.src;
+        img.src = '';
+        img.src = src;
+      }
+    });
+  }
+
+  // Run image fix after injection
+  var origInit = init;
+  init = function() {
+    origInit();
+    setTimeout(fixBrokenImages, 500);
+  };
 
   function getStyles() {
     return '\
