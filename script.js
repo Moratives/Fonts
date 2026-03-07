@@ -140,6 +140,7 @@
       '.cb-stars { font-size: 22px; color: #f4a100; margin: 12px 0; letter-spacing: 4px; }' +
 
       /* ── Testimonial Grid ── */
+      '.cb-testi-block { display: grid; grid-template-columns: 1fr; gap: 16px; }' +
       '.cb-testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }' +
       '.cb-testimonial-img { width: 100%; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); display: block; }' +
 
@@ -273,14 +274,8 @@
     '<div class="cb-section cb-bg-white" id="gallery">' +
       '<div class="cb-container cb-text-center">' +
         '<h3 class="cb-heading cb-h3" style="font-style:italic;margin-bottom:36px;">"I finally feel like I have the tools I need to find a new career!"</h3>' +
-        '<div class="cb-testi-grid">' +
-          '<img class="cb-testimonial-img" src="' + I + '/testi1.webp" alt="testimonial">' +
-          '<img class="cb-testimonial-img" src="' + I + '/testi2.webp" alt="testimonial">' +
-          '<img class="cb-testimonial-img" src="' + I + '/testi3.webp" alt="testimonial">' +
-          '<img class="cb-testimonial-img" src="' + I + '/testi4.webp" alt="testimonial">' +
-          '<img class="cb-testimonial-img" src="' + I + '/testi5.webp" alt="testimonial">' +
-          '<img class="cb-testimonial-img" src="' + I + '/testi6.webp" alt="testimonial">' +
-          '<img class="cb-testimonial-img" src="' + I + '/testi7.webp" alt="testimonial">' +
+        '<div class="cb-testi-block">' +
+          '<img class="cb-testimonial-img" src="' + I + '/final-Testimony.png" alt="testimonial">' +
         '</div>' +
         '<div class="cb-spacer-lg"></div>' +
         '<a href="javascript:void(0)" onclick="cbScrollToForm()" class="cb-btn">Register now! →</a>' +
