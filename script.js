@@ -42,16 +42,17 @@
     $("button.wj-embed-button.js-embed-button").click()
   }
 
-  function startQuarterCountdown() {
+function startQuarterCountdown() {
 
-  function getNextQuarter() {
+  function getNextQuarterTime() {
     const now = new Date();
     const minutes = now.getMinutes();
-    const nextQuarter = Math.ceil(minutes / 15) * 15;
+
+    const nextQuarter = Math.ceil((minutes + 1) / 15) * 15;
 
     const target = new Date(now);
 
-    if (nextQuarter === 60) {
+    if (nextQuarter >= 60) {
       target.setHours(now.getHours() + 1);
       target.setMinutes(0);
     } else {
@@ -64,15 +65,16 @@
     return target;
   }
 
-  let targetTime = getNextQuarter();
+  let targetTime = getNextQuarterTime();
 
   function updateCountdown() {
 
     const now = new Date();
     let diff = targetTime - now;
 
+    /* When timer finishes, immediately jump to the next quarter */
     if (diff <= 0) {
-      targetTime = getNextQuarter();
+      targetTime = getNextQuarterTime();
       diff = targetTime - now;
     }
 
@@ -90,8 +92,8 @@
     }
   }
 
-  setInterval(updateCountdown,1000);
   updateCountdown();
+  setInterval(updateCountdown, 1000);
 }
 
   
