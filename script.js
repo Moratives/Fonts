@@ -30,19 +30,9 @@
     }
   }
 
-  function scrollToForm() {
-    var overlay = document.querySelector('.wj_registration-overlay');
-    var contentSection = document.querySelector('#js-content-section');
-    var target = overlay || contentSection;
-    if (target) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (overlay) { overlay.style.display = 'block'; }
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+  function register() {
+    $("button.wj-embed-button.js-embed-button").click()
   }
-
-  window.cbScrollToForm = scrollToForm;
 
   function fixBrokenImages() {
     var imgs = document.querySelectorAll('#cb-injected-sections img');
@@ -163,6 +153,7 @@
       /* ── Responsive ── */
       '@media (max-width: 768px) {' +
         '.cb-col-half { flex: 1 1 100%; }' +
+        '.desktop-only {display: none}' +
         '.cb-col-third { flex: 1 1 100%; }' +
         '.cb-h1 { font-size: 30px; }' +
         '.cb-h2 { font-size: 26px; }' +
@@ -175,6 +166,9 @@
         '.cb-row { gap: 24px; }' +
         '.cb-cards-row > div { max-width: 100%; }' +
         '.cb-btn { padding: 16px 36px; font-size: 16px; }' +
+      '}' +
+      '@media (min-width: 768px) {' +
+        '.mobile-only {display: none}' +
       '}' +
     '';
   }
@@ -264,7 +258,7 @@
           '</div>' +
         '</div>' +
         '<div class="cb-spacer-lg"></div>' +
-        '<a href="javascript:void(0)" onclick="cbScrollToForm()" class="cb-btn">Save my seat →</a>' +
+        '<a href="javascript:void(0)" onclick="register()" class="cb-btn">Save my seat →</a>' +
         '<div class="cb-spacer-sm"></div>' +
         '<p class="cb-heading cb-h4" style="font-style:italic;">It\'s free!</p>' +
       '</div>' +
@@ -275,10 +269,11 @@
       '<div class="cb-container cb-text-center">' +
         '<h3 class="cb-heading cb-h3" style="font-style:italic;margin-bottom:36px;">"I finally feel like I have the tools I need to find a new career!"</h3>' +
         '<div class="cb-testi-block">' +
-          '<img class="cb-testimonial-img" src="' + I + '/final-Testimony.png" alt="testimonial">' +
+          '<img class="cb-testimonial-img desktop-only" src="' + I + '/final-Testimony.png" alt="testimonial">' +
+          '<img class="cb-testimonial-img mobile-only" src="' + I + '/final-Testimony-mobile.png" alt="testimonial">' +
         '</div>' +
         '<div class="cb-spacer-lg"></div>' +
-        '<a href="javascript:void(0)" onclick="cbScrollToForm()" class="cb-btn">Register now! →</a>' +
+        '<a href="javascript:void(0)" onclick="register()" class="cb-btn">Register now! →</a>' +
         '<div class="cb-spacer-sm"></div>' +
         '<p class="cb-heading cb-h4" style="font-style:italic;">This Career Change Masterclass is 100% free!</p>' +
       '</div>' +
@@ -321,7 +316,7 @@
             '<p class="cb-subheading">Participants say,</p>' +
             '<h3 class="cb-heading cb-h4" style="font-style:italic;">"I\'m so glad I attended"</h3>' +
             '<div class="cb-spacer"></div>' +
-            '<a href="javascript:void(0)" onclick="cbScrollToForm()" class="cb-btn">Save My Seat! →</a>' +
+            '<a href="javascript:void(0)" onclick="register()" class="cb-btn">Save My Seat! →</a>' +
           '</div>' +
           '<div class="cb-col-half cb-text-center" style="flex:0.8;">' +
             '<img class="cb-bio-img" src="' + I + '/theresa-bio.png" alt="Theresa White, career change coach">' +
@@ -353,7 +348,7 @@
           '<p class="cb-subheading">Join the Career Change Masterclass</p>' +
           '<h2 class="cb-heading cb-h3"><strong>and get on the path to your ideal career!</strong></h2>' +
           '<div class="cb-spacer"></div>' +
-          '<a href="javascript:void(0)" onclick="cbScrollToForm()" class="cb-btn">Save my seat! →</a>' +
+          '<a href="javascript:void(0)" onclick="register()" class="cb-btn">Save my seat! →</a>' +
           '<div class="cb-spacer-sm"></div>' +
           '<p class="cb-heading cb-h4" style="font-style:italic;">It\'s free!</p>' +
         '</div>' +
