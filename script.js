@@ -125,7 +125,7 @@ function startQuarterCountdown() {
 
   function getStyles() {
     return '' +
-      '#cb-countdown-bar{ position:fixed; top:0; left:0; width:100%; background:#B42D41; color:white; text-align:center; font-size:22px; padding:10px; z-index:99999; }' +
+      '#cb-countdown-bar{ position:fixed; top:0; left:0; width:100%; background:#d01640; color:white; text-align:center; font-size:22px; padding:10px; z-index:99999; }' +
       ' #cb-countdown{ font-weight:700; margin-left:6px; }' +
       /* ── Reset & Base ── */
       '#cb-injected-sections { font-family: "Open Sans", sans-serif; color: #4a4a4a; line-height: 1.7; -webkit-font-smoothing: antialiased; }' +
