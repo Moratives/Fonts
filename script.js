@@ -4,7 +4,7 @@
   'use strict';
 
   // ⚠️ CONFIGURE THIS: Set to your GitHub Pages or raw GitHub URL where images are hosted
-  var IMG_BASE = 'https://moratives.github.io/Fonts/images';
+  var IMG_BASE = 'https://cdn.jsdelivr.net/gh/theresacareerbloomcoaching/Webinar-Registration-Page/images';
 
   function init() {
     var countdownBar = document.createElement('div');
